@@ -1,4 +1,4 @@
-import React, { useState } from 'react' 
+import React from 'react' 
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -48,7 +48,7 @@ function App() {
     <div id="main" className={selectedTheme}>
       {user?
       <Pane display="flex" className="navbar">
-        <img src={logo} width={20} style={{marginRight:'15px'}}/>
+        <img src={logo} width={20} style={{marginRight:'15px'}} alt="brand-logo"/>
         <Pane flex={1} className="subtitle">noteback</Pane>
         <button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">+create</button>
         {user?

@@ -3,7 +3,7 @@ import { Avatar } from 'evergreen-ui'
 import sampleNotes from './temp_data/sample_notes.json'
 
 export default function NoteBack(props){
-    const [isShown, setIsShown] = React.useState(true)
+//     const [isShown, setIsShown] = React.useState(true)
     return(
             <div style={{textAlign:'left', width:'70%'}}>
                 <span className="title">Recent Notes</span>
