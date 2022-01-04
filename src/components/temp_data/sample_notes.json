@@ -1,0 +1,35 @@
+[
+     {
+         "id": 0,
+         "title": "Sample 1",
+         "tags": ["sample", "lorem"],
+         "note": "lorem ipsum is the content, what if it is something else though?",
+         "shared_ids": [{"id":"uc12305", "name":"Yash Kadam"}, {"id":"owp1249","name": "Rohit Verma"}, {"id":"oqp1249","name": "Vishal Inamdar"}],
+         "writer": ["aiuh1o231"],
+         "createdAt": "18:05UTC18-05-2021",
+         "lastUpdate": "18:05UTC18-05-2021",
+         "status": "marked"
+     },
+     {
+         "id": 1,
+         "title": "Sample 2",
+         "tags": ["sample", "lorem"],
+         "note": "lorem ipsum is the content, what if it is something else though?",
+         "shared_ids": [{"id":"uc12305", "name":"Yash Kadam"}, {"id":"owp1249","name": "Rohit Verma"}],
+         "writer": ["aiuh1o231"],
+         "createdAt": "18:05UTC18-05-2021",
+         "lastUpdate": "18:05UTC18-05-2021",
+         "status": "marked"
+     },
+     {
+         "id": 3,
+         "title": "Sample 3",
+         "tags": ["sample", "lorem"],
+         "note": "lorem ipsum is the content, what if it is something else though?",
+         "shared_ids": [{"id":"uc12305", "name":"Yash Kadam"}, {"id":"owp1249","name": "Rohit Verma"}],
+         "writer": ["aiuh1o231"],
+         "createdAt": "18:05UTC18-05-2021",
+         "lastUpdate": "18:05UTC18-05-2021",
+         "status": "marked"
+     }
+ ]
