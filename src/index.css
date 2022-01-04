@@ -55,42 +55,42 @@ code {
 
 /* typo */
 .header{
-  font-size: 40px;
+  font-size: 200%;
   font-weight: 700;
   opacity: 0.9;
 }
 .title{
-  font-size: 32px;
+  font-size: 150%;
   font-weight: 600;
   opacity: 0.8; 
 }
 .subtitle{
-  font-size: 24px;
+  font-size: 125%;
   font-weight: 600;
   opacity: 0.7;
 }
 .caption{
-  font-size: 18px;
+  font-size: 115%;
   font-weight: 500;
   opacity: 0.6;
 }
 .text{
-  font-size: 16px;
+  font-size: 100%;
   font-weight: 400;
   opacity: 0.6;
 }
 .text-smaller{
-  font-size: 14px;
+  font-size: 80%;
   font-weight: 400;
   opacity: 0.5;
 }
 .almost-muted{
-  font-size: 11px;
+  font-size: 70%;
   font-weight: 300;
   opacity: 0.4;
 }
 .muted{
-  font-size: 8px;
+  font-size: 60%;
   font-weight: 300;
   opacity: 0.4;
 }
@@ -404,5 +404,9 @@ code {
 
   .grid-4{
     grid-template-columns: 50% 50%;
+  }
+
+  .card{
+    margin: 10px 0px;
   }
 }
