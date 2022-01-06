@@ -38,7 +38,7 @@ function App() {
 
   function switchTheme(chosenTheme){
     localStorage.setItem('theme', chosenTheme);
-    if(chosenTheme=="dark-theme"){
+    if(chosenTheme==="dark-theme"){
         document.getElementById('headerbar').setAttribute("content", '#11151C');
     }
     else{
