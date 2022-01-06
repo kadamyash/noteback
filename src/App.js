@@ -13,6 +13,7 @@ import { faClipboard, faQuestionCircle } from '@fortawesome/free-regular-svg-ico
 import { faPalette, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import {Switch, Link, Route} from 'react-router-dom';
 import Help from './components/help';
+import NoteBody from './components/note';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCQ3pkrRqLAG1KQO8aUfPcNIEFOGD_zd24",
@@ -29,6 +30,8 @@ const firestore = firebase.firestore();
 function App() {
   const [user] = useAuthState(auth);
   const [isShown, setIsShown] = React.useState(false)
+
+  const screenWidth = window.innerWidth;
 
   const cookieFont = localStorage.getItem('font');
   const cookieTheme = localStorage.getItem('theme');
@@ -61,7 +64,7 @@ function App() {
             <Link to='/' className='hyperlink'>noteback
             </Link>
           </Pane>
-        <button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">+create</button>
+        <button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">{screenWidth>500?"+create":" + "}</button>
         {user?
           <Popover
           position={Position.BOTTOM_RIGHT}
@@ -126,6 +129,7 @@ function App() {
             </Dialog>
         </Route>
         <Route path="/help" exact><Help  auth={auth} store={firestore}></Help></Route>
+        <Route path="/note/:id" exact><NoteBody  auth={auth} store={firestore}></NoteBody></Route>
       </Switch>
     </div>
   );

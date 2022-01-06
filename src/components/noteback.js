@@ -1,6 +1,7 @@
 import React from 'react' 
 import { Avatar } from 'evergreen-ui' 
 import sampleNotes from './temp_data/sample_notes.json'
+import { Link } from 'react-router-dom';
 
 export default function NoteBack(props){
 //     const [isShown, setIsShown] = React.useState(true)
@@ -33,11 +34,13 @@ export default function NoteBack(props){
 
     function Note(props){
         return(
-            <div className="card">
-                <span className="caption cardelement">{props.text.title}</span>
-                <span className="text-smaller cardelement">{props.text.createdAt}</span>
-                <span className="array cardelement">{props.text.shared_ids && props.text.shared_ids.map(userEntity => <SharedUser key={userEntity.id} name={userEntity.name}/>)}</span>
-            </div>
+            <Link className="hyperlink" to={"/note/"+props.text.id}>
+                <div className="card">
+                    <span className="caption cardelement">{props.text.title}</span>
+                    <span className="text-smaller cardelement">{props.text.createdAt}</span>
+                    <span className="array cardelement">{props.text.shared_ids && props.text.shared_ids.map(userEntity => <SharedUser key={userEntity.id} name={userEntity.name}/>)}</span>
+                </div>
+            </Link>
         );
     }
 
