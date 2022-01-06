@@ -248,6 +248,10 @@ code {
 
 }
 
+.link{
+  color: var(--secondary);
+}
+
 .card{
   border-radius: 15px;
   padding: 5px;

@@ -11,6 +11,8 @@ import Signout from './components/signout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard, faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { faPalette, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {Switch, Link, Route} from 'react-router-dom';
+import Help from './components/help';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCQ3pkrRqLAG1KQO8aUfPcNIEFOGD_zd24",
@@ -35,12 +37,10 @@ function App() {
   const [selectedFont, setSelectedFont] = React.useState(cookieFont?cookieFont:'font-inter')
 
   function switchTheme(chosenTheme){
-    console.log(chosenTheme);
     localStorage.setItem('theme', chosenTheme);
   }
 
   function switchFont(chosenFont){
-    console.log(chosenFont);
     localStorage.setItem('font', chosenFont);
   }
   
@@ -48,8 +48,13 @@ function App() {
     <div id="main" className={selectedTheme}>
       {user?
       <Pane display="flex" className="navbar">
-        <img src={logo} width={20} style={{marginRight:'15px'}} alt="brand-logo"/>
-        <Pane flex={1} className="subtitle">noteback</Pane>
+        <Link to='/' className='hyperlink'>
+          <img src={logo} width={20} style={{marginRight:'15px'}} alt="brand-logo"/>
+        </Link>
+          <Pane flex={1} className="subtitle">
+            <Link to='/' className='hyperlink'>noteback
+            </Link>
+          </Pane>
         <button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">+create</button>
         {user?
           <Popover
@@ -60,7 +65,7 @@ function App() {
               <Menu.Group>
                 <Menu.Item onClick={() => setIsShown(true)}><FontAwesomeIcon icon={faPalette} style={{marginRight:'1em'}}/>Customize UI</Menu.Item>
                 <Menu.Item><FontAwesomeIcon icon={faClipboard} style={{marginRight:'1em'}}/>My Notes</Menu.Item>
-                <Menu.Item><FontAwesomeIcon icon={faQuestionCircle} style={{marginRight:'1em'}}/>Help</Menu.Item>
+                <Menu.Item><Link to="/help" className='hyperlink'><FontAwesomeIcon icon={faQuestionCircle} style={{marginRight:'1em'}}/>Help</Link></Menu.Item>
               </Menu.Group>
               <Menu.Divider />
               <Menu.Group>
@@ -76,39 +81,46 @@ function App() {
         :null}
       </Pane>
       :null}
-      <div id="App" className={selectedFont}>
-        {user?<NoteBack auth={auth} store={firestore}/>:<Signin auth={auth}/>}
-      </div>
+      
+      
+      <Switch>
+        <Route path="/" exact>
+          <div id="App" className={selectedFont}>
+              {user?<NoteBack auth={auth} store={firestore}/>:<Signin auth={auth}/>}
+            </div>
 
-      <Dialog
-        isShown={isShown}
-        title="Customize UI"
-        hasFooter={false}
-        onCloseComplete={() => setIsShown(false)}
-      >
-        <Menu>
-          <Menu.OptionsGroup
-            title="Theme"
-            options={[
-              { label: 'Light', value: 'light-theme'},
-              { label: 'Dark', value: 'dark-theme' },
-            ]}
-            selected={selectedTheme}
-            onChange={(selected) => {switchTheme(selected);setSelectedTheme(selected)}}
-          />
-          <Menu.Divider />
-          <Menu.OptionsGroup
-            title="Font"
-            options={[
-              { label: 'Inter', value: 'font-inter', className: 'font-inter' },
-              { label: 'Cursive', value: 'font-kalam', className: 'font-kalam' },
-              { label: 'Slab', value: 'font-slab', className: 'font-slab' }
-            ]}
-            selected={selectedFont}
-            onChange={(selected) => {switchFont(selected);setSelectedFont(selected)}}
-          />
-        </Menu>
-      </Dialog>
+            <Dialog
+              isShown={isShown}
+              title="Customize UI"
+              hasFooter={false}
+              onCloseComplete={() => setIsShown(false)}
+            >
+              <Menu>
+                <Menu.OptionsGroup
+                  title="Theme"
+                  options={[
+                    { label: 'Light', value: 'light-theme'},
+                    { label: 'Dark', value: 'dark-theme' },
+                  ]}
+                  selected={selectedTheme}
+                  onChange={(selected) => {switchTheme(selected);setSelectedTheme(selected)}}
+                />
+                <Menu.Divider />
+                <Menu.OptionsGroup
+                  title="Font"
+                  options={[
+                    { label: 'Inter', value: 'font-inter', className: 'font-inter' },
+                    { label: 'Cursive', value: 'font-kalam', className: 'font-kalam' },
+                    { label: 'Slab', value: 'font-slab', className: 'font-slab' }
+                  ]}
+                  selected={selectedFont}
+                  onChange={(selected) => {switchFont(selected);setSelectedFont(selected)}}
+                />
+              </Menu>
+            </Dialog>
+        </Route>
+        <Route path="/help" exact><Help  auth={auth} store={firestore}></Help></Route>
+      </Switch>
     </div>
   );
 }
