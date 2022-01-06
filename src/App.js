@@ -38,12 +38,12 @@ function App() {
 
   function switchTheme(chosenTheme){
     localStorage.setItem('theme', chosenTheme);
-    // if(chosenTheme=="dark-theme"){
-    //     document.getElementById('headerbar').setAttribute("content", '#11151C');
-    // }
-    // else{
-    //     document.getElementById('headerbar').setAttribute("content", '#F8FCFE');
-    // }
+    if(chosenTheme=="dark-theme"){
+        document.getElementById('headerbar').setAttribute("content", '#11151C');
+    }
+    else{
+        document.getElementById('headerbar').setAttribute("content", '#F8FCFE');
+    }
   }
 
   function switchFont(chosenFont){
