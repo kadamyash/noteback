@@ -23,7 +23,7 @@ export default function NoteBody(props) {
     console.log(searchParam);
 
     return (
-        <div id="App">
+        <div id="App" className={props.font}>
                 <Pane display="flex" alignItems="center" flexDirection="column">
                     <div className="header">Note</div>
                     <br/>

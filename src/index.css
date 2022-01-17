@@ -19,6 +19,9 @@
 
   --white: #F8FCFE;
   --black: #11151C;
+  
+  --white-hover: #f7f7f7;
+  --black-hover: #232b3a;
 
   --primary-hover:#075c79;
   --light-hover:#AAB9BA;
@@ -160,6 +163,16 @@ code {
   background-color: var(--light);
 }
 
+.light-theme .input{
+  border: 1px solid #11151C;
+}
+
+.light-theme .input:focus{
+  border: 1.5px solid var(--success);
+  background-color: var(--white-hover);
+  color: var(--black);
+}
+
 .dark-theme{
   background: var(--black);
   color: var(--white);
@@ -178,6 +191,17 @@ code {
   background-color: var(--dark);
 }
 
+.dark-theme .input{
+  background-color: var(--black);
+  border: 1px solid #AAB9BA;
+  color: var(--white-hover);
+}
+
+.dark-theme .input:focus{
+  border: 1.5px solid var(--success-hover);
+  background-color: var(--black-hover);
+  color: var(--white);
+}
 
 /* app */
 #App, #root, #main{
@@ -197,7 +221,7 @@ code {
 
 .navbar{
   position: fixed;
-  padding: 1em 10%;
+  padding: 1em 15%;
   top: 0;
   width: 100%;
   display: flex;
@@ -265,6 +289,19 @@ code {
   margin: 5px 10px;
 }
 
+.input{
+  border-radius: 15px;
+  height: 50px;
+  padding: 0 10px;
+  font-size: 15px;
+  outline: none;
+}
+
+.textarea{
+  height: 150px !important;
+  padding: 15px 10px;
+}
+
 .tool-card{
   display: flex;
   align-items: center;
@@ -272,6 +309,17 @@ code {
   border-radius: 15px;
   margin: 10px;
   padding: 10px;
+}
+
+.column{
+
+  display: flex;
+  flex-direction: column;
+}
+
+.column form{
+  display: flex;
+  flex-direction: column;
 }
 
 .grid{
@@ -284,6 +332,12 @@ code {
   grid-template-columns: 25% 25% 25% 25%;
 }
 
+.overflow{
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+}
+
 .array{
   display: flex;
   flex-direction: row;
@@ -291,6 +345,24 @@ code {
 
 .array .arrayelement{
   margin-right: 5px;
+}
+
+.tag{
+  border-radius: 20px;
+  cursor: pointer;
+  height: 42px;
+  padding: 0 10px;
+  background-color: var(--tinted);
+  color: var(--black);
+  margin-right: 10px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag:hover{
+  background-color: var(--danger-hover);
 }
 
 
@@ -374,6 +446,7 @@ code {
 
 .btn-warning{
   background-color: var(--warning);
+  color: var(--black-hover);
 }
 
 .btn-warning:hover{
@@ -382,6 +455,7 @@ code {
 
 .btn-success{
   background-color: var(--success);
+  color: var(--black-hover);
 }
 
 .btn-success:hover{
@@ -402,6 +476,9 @@ code {
 
 /* responsive */
 @media screen and (max-width:800px){
+  .navbar{
+    padding: 5%;
+  }
   .grid{
     grid-template-columns: 100%;
   }

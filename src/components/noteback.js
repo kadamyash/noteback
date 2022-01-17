@@ -11,7 +11,7 @@ export default function NoteBack(props){
                 <div className="grid">
                     {sampleNotes && sampleNotes.map(note => <Note key={note.id} text={note}/>)}
                 </div>
-                <button className="btn caption fullwidth-cta">view all notes</button>
+                <Link to="/my-notes" className="hyperlink"><button className="btn caption fullwidth-cta">view all notes</button></Link>
                 <br/><br/>
                 {/* <span className="title">Quick Access</span>
                 <br/><br/>

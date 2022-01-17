@@ -8,7 +8,7 @@
          "writer": ["aiuh1o231"],
          "createdAt": "18:05UTC18-05-2021",
          "lastUpdate": "18:05UTC18-05-2021",
-         "status": "marked"
+         "markedBy": []
      },
      {
          "id": 1,
@@ -19,7 +19,7 @@
          "writer": ["aiuh1o231"],
          "createdAt": "18:05UTC18-05-2021",
          "lastUpdate": "18:05UTC18-05-2021",
-         "status": "marked"
+         "markedBy": []
      },
      {
          "id": 3,
@@ -30,6 +30,6 @@
          "writer": ["aiuh1o231"],
          "createdAt": "18:05UTC18-05-2021",
          "lastUpdate": "18:05UTC18-05-2021",
-         "status": "marked"
+         "markedBy": []
      }
  ]

@@ -14,6 +14,8 @@ import { faPalette, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import {Switch, Link, Route} from 'react-router-dom';
 import Help from './components/help';
 import NoteBody from './components/note';
+import AllNotes from './components/allnotes';
+import AddNote from './components/addnote';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCQ3pkrRqLAG1KQO8aUfPcNIEFOGD_zd24",
@@ -64,7 +66,7 @@ function App() {
             <Link to='/' className='hyperlink'>noteback
             </Link>
           </Pane>
-        <button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">{screenWidth>500?"+create":" + "}</button>
+        <Link className='hyperlink' to="/add-note"><button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">{screenWidth>500?"+create":" + "}</button></Link>
         {user?
           <Popover
           position={Position.BOTTOM_RIGHT}
@@ -90,15 +92,7 @@ function App() {
         :null}
       </Pane>
       :null}
-      
-      
-      <Switch>
-        <Route path="/" exact>
-          <div id="App" className={selectedFont}>
-              {user?<NoteBack auth={auth} store={firestore}/>:<Signin auth={auth}/>}
-            </div>
-
-            <Dialog
+      <Dialog
               isShown={isShown}
               title="Customize UI"
               hasFooter={false}
@@ -127,9 +121,17 @@ function App() {
                 />
               </Menu>
             </Dialog>
+      
+      <Switch>
+        <Route path="/" exact>
+          <div id="App" className={selectedFont}>
+              {user?<NoteBack auth={auth} store={firestore}/>:<Signin auth={auth}/>}
+            </div>
         </Route>
         <Route path="/help" exact><Help  auth={auth} store={firestore}></Help></Route>
-        <Route path="/note/:id" exact><NoteBody  auth={auth} store={firestore}></NoteBody></Route>
+        <Route path="/my-notes" exact><AllNotes font={selectedFont} auth={auth} store={firestore}></AllNotes></Route>
+        <Route path="/add-note" exact><AddNote font={selectedFont} auth={auth} store={firestore}></AddNote></Route>
+        <Route path="/note/:id" exact><NoteBody font={selectedFont} auth={auth} store={firestore}></NoteBody></Route>
       </Switch>
     </div>
   );
