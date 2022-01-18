@@ -173,6 +173,10 @@ code {
   color: var(--black);
 }
 
+.light-theme .navbar{
+  background-color: var(--white);
+}
+
 .dark-theme{
   background: var(--black);
   color: var(--white);
@@ -203,6 +207,10 @@ code {
   color: var(--white);
 }
 
+.dark-theme .navbar{
+  background-color: var(--black);
+}
+
 /* app */
 #App, #root, #main{
   height: 100%;
@@ -213,6 +221,7 @@ code {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-top: 15%;
 }
 
 #main{
@@ -227,6 +236,7 @@ code {
   display: flex;
   flex-direction: row;
   align-items: center;
+  z-index: 3;
 }
 
 .avatar{
@@ -345,6 +355,14 @@ code {
 
 .array .arrayelement{
   margin-right: 5px;
+}
+
+.ops{
+  opacity: 0.7;
+}
+
+.ops:hover{
+  opacity: 1;
 }
 
 .tag{

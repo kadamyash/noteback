@@ -75,7 +75,7 @@ export default function AddNote(props) {
                             <input id="tags" className="input" style={{"width": screenWidth>'800'?'70%':'90%'}} type="text" placeholder='Add Tags' onKeyPress={(event)=>handleKeyPress(event)}/>
                             <br/><br/><br/>
                             <div className="array">
-                                <button className='btn btn-warning' style={{marginRight:'10px'}} onClick={() => setIsShown(true)}>Discard</button>
+                                <button className='btn btn-warning' style={{marginRight:'10px'}} onClick={() => setIsShown(true)} type="button">Discard</button>
                                 <button className='btn btn-success' style={{marginRight:'10px'}} type="submit">Save</button>
                             </div>
                         </form>

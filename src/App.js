@@ -75,7 +75,7 @@ function App() {
             <Menu>
               <Menu.Group>
                 <Menu.Item onClick={() => setIsShown(true)}><FontAwesomeIcon icon={faPalette} style={{marginRight:'1em'}}/>Customize UI</Menu.Item>
-                <Menu.Item><FontAwesomeIcon icon={faClipboard} style={{marginRight:'1em'}}/>My Notes</Menu.Item>
+                <Menu.Item><Link to="/my-notes" className='hyperlink'><FontAwesomeIcon icon={faClipboard} style={{marginRight:'1em'}}/>My Notes</Link></Menu.Item>
                 <Menu.Item><Link to="/help" className='hyperlink'><FontAwesomeIcon icon={faQuestionCircle} style={{marginRight:'1em'}}/>Help</Link></Menu.Item>
               </Menu.Group>
               <Menu.Divider />
