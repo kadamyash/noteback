@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Pane} from 'evergreen-ui'
 import { useHistory } from 'react-router';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
