@@ -3,14 +3,13 @@ import { Avatar, Dialog } from 'evergreen-ui'
 import { Link } from 'react-router-dom';
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import 'firebase/firestore';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function NoteBack(props){
     const firestore = props.store;
     const noteRef = firestore.collection('notes'); 
     const auth = props.auth;
-    
     const {uid} = auth.currentUser;
     const notesQ = noteRef.where("writer_id", "==", uid).limit(4);
     // const sharedNotesQ = noteRef.where("shared_ids", "array-contains", uid);
@@ -68,7 +67,8 @@ export default function NoteBack(props){
                     <span className="text-smaller cardelement">{toDate(props.text.createdAt.seconds)}</span>
                     <span className="array cardelement">{props.text.shared_entities && props.text.shared_entities.map(userEntity => <SharedUser key={userEntity.id} name={userEntity.name}/>)}</span>
                     <span className="array cardelement">
-                        <FontAwesomeIcon className='ops' icon={faTrash} style={{margin:'10px 10px 10px 0'}} onClick={()=>setIsShown(true)}/>
+                        <FontAwesomeIcon className='ops' icon={faTrashAlt} style={{margin:'10px 20px 10px 0'}} onClick={()=>setIsShown(true)}/>
+                        <FontAwesomeIcon className='ops' icon={faPen} style={{margin:'10px 20px 10px 0'}}/>
                     </span>
                     <Dialog
                         isShown={isShown}

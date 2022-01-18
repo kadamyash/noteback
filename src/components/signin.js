@@ -8,7 +8,6 @@ export default function Signin(props) {
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     console.log(ignored);
     const signInWithGoogle = () => {
-        console.log(props);
         const provider = new firebase.auth.GoogleAuthProvider();
         props.auth.signInWithPopup(provider);
     }

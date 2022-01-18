@@ -47,7 +47,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  height: 100%;
 }
 
 code {
@@ -219,7 +219,7 @@ code {
 #App{
   display: flex;
   padding-top: 10%;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 }
@@ -495,8 +495,8 @@ code {
 /* responsive */
 @media screen and (max-width:800px){
   #App{
-    padding-top: 15%;
-    justify-content: start;
+    padding-top: 20%;
+    justify-content: flex-start;
   }
 
   .navbar{

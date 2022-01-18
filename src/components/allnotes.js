@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 
 export default function AllNotes(props) {
     const firestore = props.store;
@@ -46,7 +46,8 @@ export default function AllNotes(props) {
                     <span className="text-smaller cardelement">{toDate(props.text.createdAt.seconds)}</span>
                     <span className="array cardelement">{props.text.shared_entities && props.text.shared_entities.map(userEntity => <SharedUser key={userEntity.id} name={userEntity.name}/>)}</span>
                     <span className="array cardelement">
-                        <FontAwesomeIcon className='ops' icon={faTrash} style={{margin:'10px 10px 10px 0'}} onClick={()=>setIsShown(true)}/>
+                        <FontAwesomeIcon className='ops' icon={faTrashAlt} style={{margin:'10px 20px 10px 0'}} onClick={()=>setIsShown(true)}/>
+                        <FontAwesomeIcon className='ops' icon={faPen} style={{margin:'10px 20px 10px 0'}}/>
                     </span>
                     <Dialog
                         isShown={isShown}
