@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import firebase from 'firebase/compat/app'
 import { Pane, Spinner } from 'evergreen-ui'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

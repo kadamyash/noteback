@@ -1,6 +1,5 @@
 import React from 'react';
 import { Avatar } from 'evergreen-ui'
-import { useHistory } from 'react-router'
 import 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Link } from 'react-router-dom';
