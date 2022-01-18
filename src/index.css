@@ -221,7 +221,6 @@ code {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 15%;
 }
 
 #main{
@@ -494,6 +493,10 @@ code {
 
 /* responsive */
 @media screen and (max-width:800px){
+  #App{
+    padding-top: 15%;
+  }
+
   .navbar{
     padding: 5%;
   }
