@@ -20,7 +20,7 @@ export default function AllNotes(props) {
     return (
         <div id="App" className={props.font}>
                 <div style={{textAlign:'left', width:'70%'}}>
-                    <div className="header">All Notes</div>
+                    <div className="title">All Notes</div>
                     <br/>
                     <div className="grid">
                         {notes && notes.map(note => <Note key={note.id} text={note}/>)}
