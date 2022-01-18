@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 export default function Signin(props) {
-    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-    console.log(ignored);
+    const [forceUpdate] = useReducer(x => x + 1, 0);
     const signInWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         props.auth.signInWithPopup(provider);
@@ -20,7 +19,7 @@ export default function Signin(props) {
         3000
     );
     return (
-        <div className="App">
+        <div className="App" style={{height:'100vh'}}>
                 <Pane display="flex" alignItems="center" flexDirection="column">
                     <div className="header">Welcome to Noteback</div>
                     <br/>
@@ -30,6 +29,9 @@ export default function Signin(props) {
                     </Pane>
                     <div id="throbber-text" className='almost-muted'>Checking for previous sign-in...</div>
                 </Pane>
+                <div className="footer">
+                    <div>Noteback Web Notepad - 2022</div>
+                </div>
         </div>
     );
 }

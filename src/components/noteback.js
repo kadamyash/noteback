@@ -16,7 +16,7 @@ export default function NoteBack(props){
     const [notes] = useCollectionData(notesQ, {idField: 'id'});
     // const [sharedNotes] = useCollectionData(sharedNotesQ, {idField: 'id'});
     return(
-            <div style={{textAlign:'left', width:'70%'}}>
+            <div style={{textAlign:'left', width:'70%', height: '100vh'}}>
                 <span className="title">Recent Notes</span>
                 <div className="grid">
                     {notes && notes.map(note => <Note key={note.id} text={note}/>)}

@@ -212,7 +212,7 @@ code {
 }
 
 /* app */
-#App, #root, #main{
+#root{
   height: 100%;
 }
 
@@ -226,6 +226,7 @@ code {
 
 #main{
   font-family: inherit !important;
+  height: 100%;
 }
 
 .navbar{
@@ -478,6 +479,13 @@ code {
 
 .btn-success:hover{
   background-color: var(--success-hover);
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  background-color: var(--black-hover);
+  color: var(--white);
 }
 
 .fullwidth-cta{

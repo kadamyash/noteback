@@ -55,7 +55,7 @@ export default function AddNote(props) {
     }
 
     return (
-        <div id="App" className={props.font} style={{textAlign:'left', width:screenWidth>'800'?'50%':'90%', margin:"auto"}}>
+        <div id="App" className={props.font} style={{textAlign:'left', height:'100vh', width:screenWidth>'800'?'50%':'90%', margin:"auto"}}>
                 <Pane display="flex" alignItems="left" flexDirection="column" width="100%">
                     <div className="title">Create a note</div>
                     <br/>
