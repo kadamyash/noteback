@@ -1,17 +1,16 @@
 import React from 'react';
-import { Avatar, Pane} from 'evergreen-ui'
+import { Avatar } from 'evergreen-ui'
 import { useHistory } from 'react-router'
 import 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Link } from 'react-router-dom';
 
 export default function AllNotes(props) {
-    let history = useHistory();
     const firestore = props.store;
     const noteRef = firestore.collection('notes'); 
     const auth = props.auth;
     
-    const {uid, photoURL} = auth.currentUser;
+    const {uid} = auth.currentUser;
     console.log(uid);
     const notesQ = noteRef.where("writer_id", "==", uid);
     const sharedNotesQ = noteRef.where("shared_ids", "array-contains", uid);

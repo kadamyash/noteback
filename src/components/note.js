@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pane} from 'evergreen-ui'
 import { useHistory } from 'react-router';
-import sampleNotes from './temp_data/sample_notes.json'
 
 export default function NoteBody(props) {
     let history = useHistory();

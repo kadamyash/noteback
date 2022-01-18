@@ -8,12 +8,13 @@ export default function AddNote(props) {
     const firestore = props.store;
     const screenWidth = window.innerWidth;
     const auth = props.auth;
-    const {uid, email, displayName} = auth.currentUser;
+    const {uid, displayName} = auth.currentUser;
     const noteRef = firestore.collection('notes'); 
 
     const [tags, setTags] = useState([]);
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-    const [isShown, setIsShown] = useState(false)
+    const [isShown, setIsShown] = useState(false);
+    console.log(ignored);
 
     const [titleValue, setTitleValue] = useState('');
     const [formValue, setFormValue] = useState('');

@@ -6,20 +6,18 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 export default function Signin(props) {
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+    console.log(ignored);
     const signInWithGoogle = () => {
         console.log(props);
         const provider = new firebase.auth.GoogleAuthProvider();
         props.auth.signInWithPopup(provider);
     }
-
-    const{throbber, setThrobber} = useState(false);
     setTimeout(
         function() {
             document.getElementById("throbber").style.display="none";
             document.getElementById("throbber-text").style.display="none";
             forceUpdate();
-        }
-        .bind(this),
+        },
         3000
     );
     return (
