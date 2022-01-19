@@ -41,13 +41,21 @@ function App() {
   const [selectedTheme, setSelectedTheme] = React.useState(cookieTheme?cookieTheme:'light-theme')
   const [selectedFont, setSelectedFont] = React.useState(cookieFont?cookieFont:'font-inter')
 
+window.onload = () =>{
+  document.getElementById('body').className=localStorage.getItem('theme');
+  document.getElementById('headerbar').className=localStorage.getItem('font');
+
+}
+
   function switchTheme(chosenTheme){
     localStorage.setItem('theme', chosenTheme);
     if(chosenTheme==="dark-theme"){
         document.getElementById('headerbar').setAttribute("content", '#11151C');
+        document.getElementById('body').className="dark-theme";
     }
     else{
         document.getElementById('headerbar').setAttribute("content", '#F8FCFE');
+        document.getElementById('body').className="light-theme";
     }
   }
 
