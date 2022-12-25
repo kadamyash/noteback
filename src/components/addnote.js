@@ -60,7 +60,7 @@ export default function AddNote(props) {
                     <div className="title">Create a note</div>
                     <br/>
                     <div className='column'>
-                        <form onSubmit={sendNote}>
+                        <form onSubmit={sendNote} style={{'gap':'4px'}}>
                             <input className="input" style={{"width": screenWidth>'800'?'70%':'90%'}} type="text" placeholder='Title' onChange={(e)=>setTitleValue(e.target.value)}/>
                             <br/>
                             <textarea className="input textarea" type="text" placeholder='Put in your thoughts' onChange={(e)=>setFormValue(e.target.value)}/>

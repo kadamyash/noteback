@@ -65,7 +65,6 @@ window.onload = () =>{
   
   return (
     <div id="main" className={selectedTheme}>
-      {user?
       <Pane display="flex" className="navbar">
         <Link to='/' className='hyperlink'>
           <img src={logo} width={20} style={{marginRight:'15px'}} alt="brand-logo"/>
@@ -74,7 +73,7 @@ window.onload = () =>{
             <Link to='/' className='hyperlink'>noteback
             </Link>
           </Pane>
-        <Link className='hyperlink' to="/add-note"><button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">{screenWidth>500?"+create":" + "}</button></Link>
+          {user?<Link className='hyperlink' to="/add-note"><button style={{marginRight:15}} className="btn btn-dark btn-sm btn-fx">{screenWidth>500?"+create":" + "}</button></Link>:null}
         {user?
           <Popover
           position={Position.BOTTOM_RIGHT}
@@ -99,7 +98,6 @@ window.onload = () =>{
         </Popover>
         :null}
       </Pane>
-      :null}
       <Dialog
               isShown={isShown}
               title="Customize UI"
