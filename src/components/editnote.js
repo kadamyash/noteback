@@ -103,7 +103,7 @@ export default function EditNote(props) {
                             <input id="tags" className="input" style={{"width": screenWidth>'800'?'70%':'90%'}} type="text" placeholder='Add Tags' onKeyPress={(event)=>handleKeyPress(event)}/>
                             <br/><br/><br/>
                             <div className="array">
-                                <button className='btn btn-warning' style={{marginRight:'10px'}} onClick={() => setIsShown(true)} type="button">Discard</button>
+                                <button className='btn btn-warning' style={{marginRight:'10px'}} onClick={() => setIsShown(true)} type="button">Cancel</button>
                                 <button className='btn btn-success' style={{marginRight:'10px'}} type="submit">Save</button>
                             </div>
                         </form>
@@ -114,10 +114,10 @@ export default function EditNote(props) {
                     title="Discard Changes?"
                     onCloseComplete={() => {setIsShown(false)}}
                     onConfirm={()=> history.push("/")}
-                    confirmLabel="Discard my changes"
+                    confirmLabel="Discard updates"
                     intent="danger"
                 >
-                    Your current typed in data will be lost. Are you sure you want to continue?   
+                    Any updates you made NOW will be lost. Are you sure you want to continue?   
                 </Dialog>
         </div>
     );

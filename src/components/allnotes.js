@@ -47,7 +47,7 @@ export default function AllNotes(props) {
                     <span className="array cardelement">{props.text.shared_entities && props.text.shared_entities.map(userEntity => <SharedUser key={userEntity.id} name={userEntity.name}/>)}</span>
                     <span className="array cardelement">
                         <FontAwesomeIcon className='ops' icon={faTrashAlt} style={{margin:'10px 20px 10px 0'}} onClick={()=>setIsShown(true)}/>
-                        <FontAwesomeIcon className='ops' icon={faPen} style={{margin:'10px 20px 10px 0'}}/>
+                        <Link className="hyperlink" to={"/edit/"+props.text.id}><FontAwesomeIcon className='ops' icon={faPen} style={{margin:'10px 20px 10px 0'}}/></Link>
                     </span>
                     <Dialog
                         isShown={isShown}
