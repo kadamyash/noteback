@@ -393,12 +393,12 @@ code {
   font-size: 14px;
 }
 
-.tag:hover, .non-removable{
-  background-color: var(--tinted) !important;
-}
-
 .tag:hover{
   background-color: var(--danger-hover);
+}
+
+.non-removable.tag:hover{
+  background-color: var(--tinted) !important;
 }
 
 .preloader{

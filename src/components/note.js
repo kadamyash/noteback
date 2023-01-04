@@ -1,6 +1,7 @@
 import { Avatar } from 'evergreen-ui';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { deSalt } from './salt/deSalt';
 
 export default function NoteBody(props) {
     let history = useHistory();
@@ -30,13 +31,13 @@ export default function NoteBody(props) {
 
     useEffect(() => {
         async function fetchNote(){
+            try{
             const doc = await noteRef.get();
             setNote(doc);
-                console.log(searchParam, note);
-            if (!note) {
-                console.log('No such document!');
-            } else {
-                console.log('Data being rendered...');
+            }
+            catch(error){
+                alert("Something went wrong");
+                history.push("/");
             }
         }
         fetchNote();
@@ -62,7 +63,7 @@ export default function NoteBody(props) {
                     <ul className='tags'>
                         {note?note.data().tags.map(tag => <li className='tag tag-small non-removable'>{tag}</li>):<ContentPreLoad/>}
                     </ul>
-                    <div className='text'>{note?note.data().note:<ContentPreLoad/>}</div>
+                    <div className='text'>{note?deSalt(note.data().note, parseInt(note.data().writer_id.match(/[0-9]/))):<ContentPreLoad/>}</div>
                     <br/>
                     <div className='credits'>
                         <Avatar className="avatar" name={note?note.data().writer_name:"..."} size={40} />

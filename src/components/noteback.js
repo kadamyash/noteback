@@ -15,11 +15,12 @@ export default function NoteBack(props){
     // const sharedNotesQ = noteRef.where("shared_ids", "array-contains", uid);
     const [notes] = useCollectionData(notesQ, {idField: 'id'});
     // const [sharedNotes] = useCollectionData(sharedNotesQ, {idField: 'id'});
+    
     return(
             <div style={{textAlign:'left', width:'70%', height: '100%'}}>
                 <span className="title">Recent Notes</span>
                 <div className="grid">
-                    {notes && notes.map(note => <Note key={note.id} text={note}/>)}
+                    {notes && notes.sort((a,b) => (a.createdAt > b.createdAt) ? -1 : ((b.createdAt > a.createdAt) ? 1 : 0)).map(note => <Note key={note.id} text={note}/>)}
                 </div>
                 <Link to="/my-notes" className="hyperlink"><button className="btn caption fullwidth-cta">view all notes</button></Link>
                 <br/><br/>
@@ -68,7 +69,7 @@ export default function NoteBack(props){
                     <span className="array cardelement">{props.text.shared_entities && props.text.shared_entities.map(userEntity => <SharedUser key={userEntity.id} name={userEntity.name}/>)}</span>
                     <span className="array cardelement">
                         <FontAwesomeIcon className='ops' icon={faTrashAlt} style={{margin:'10px 20px 10px 0'}} onClick={()=>setIsShown(true)}/>
-                        <FontAwesomeIcon className='ops' icon={faPen} style={{margin:'10px 20px 10px 0'}}/>
+                        <Link className="hyperlink" to={"/edit/"+props.text.id}><FontAwesomeIcon className='ops' icon={faPen} style={{margin:'10px 20px 10px 0'}}/></Link>
                     </span>
                     <Dialog
                         isShown={isShown}

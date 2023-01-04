@@ -16,6 +16,7 @@ import Help from './components/help';
 import NoteBody from './components/note';
 import AllNotes from './components/allnotes';
 import AddNote from './components/addnote';
+import EditNote from './components/editnote';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCQ3pkrRqLAG1KQO8aUfPcNIEFOGD_zd24",
@@ -138,6 +139,7 @@ window.onload = () =>{
         <Route path="/my-notes" exact><AllNotes font={selectedFont} auth={auth} store={firestore}></AllNotes></Route>
         <Route path="/add-note" exact><AddNote font={selectedFont} auth={auth} store={firestore}></AddNote></Route>
         <Route path="/note/:id" exact><NoteBody font={selectedFont} auth={auth} store={firestore}></NoteBody></Route>
+        <Route path="/edit/:id" exact><EditNote font={selectedFont} auth={auth} store={firestore}></EditNote></Route>
       </Switch>
     </div>
   );

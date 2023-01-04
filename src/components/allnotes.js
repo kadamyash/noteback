@@ -23,7 +23,7 @@ export default function AllNotes(props) {
                     <div className="title">All Notes</div>
                     <br/>
                     <div className="grid">
-                        {notes && notes.map(note => <Note key={note.id} text={note}/>)}
+                        {notes && notes.sort((a,b) => (a.createdAt > b.createdAt) ? -1 : ((b.createdAt > a.createdAt) ? 1 : 0)).map(note => <Note key={note.id} text={note}/>)}
                     </div>
                 </div>
         </div>

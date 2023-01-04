@@ -1,23 +1,51 @@
-import React, { useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { Dialog, Pane, toaster} from 'evergreen-ui'
 import { useHistory } from 'react-router';
 import firebase from 'firebase/compat/app';
 import {addSalt} from './salt/addSalt.js';
+import { deSalt } from './salt/deSalt.js';
 
-export default function AddNote(props) {
+export default function EditNote(props) {
     let history = useHistory();
     const firestore = props.store;
-    const screenWidth = window.innerWidth;
     const auth = props.auth;
     const {uid, displayName} = auth.currentUser;
+    var url = window.location.href;
+    const pattern = url.match(/edit\/(.*)/);
+    let searchParam = null;
+    if(pattern!==null){
+        searchParam = pattern[1]
+    }
+    else{
+        history.push("/");
+        alert("incorrect url");
+    }
+    const noteDoc = firestore.collection('notes').doc(searchParam);
+    const [note, setNote] = useState(null);
+
+    useEffect(() => {
+        async function fetchNote(){
+            try{
+                const doc = await noteDoc.get();
+                setNote(doc);
+                setTags(doc.data().tags);
+            }
+            catch(error){
+                alert("Something went wrong");
+                history.push("/");
+            }
+        }
+        fetchNote();
+    },[]);
+    const screenWidth = window.innerWidth;
     const noteRef = firestore.collection('notes'); 
 
     const [tags, setTags] = useState([]);
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     const [isShown, setIsShown] = useState(false);
 
-    const [titleValue, setTitleValue] = useState('');
-    const [formValue, setFormValue] = useState('');
+    const [titleValue, setTitleValue] = useState(note?note.data().title:null);
+    const [formValue, setFormValue] = useState(note?note.data().note:null);
 
     function handleKeyPress(event){
         if(event.charCode === 13){
@@ -26,17 +54,17 @@ export default function AddNote(props) {
             let newTagList = tags;
             newTagList.push(input.value);
             setTags(newTagList);
-            input.value = ""
+            input.value = "";
             forceUpdate();
         }
     }
 
-    const sendNote = async(e) => {
+    const updateNote = async(e) => {
         e.preventDefault();
         if(formValue!=='' && titleValue!==''){
-            await noteRef.add({
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                updatedAt: null,
+            await noteDoc.set({
+                createdAt: note?note.data().createdAt:null,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
                 note: addSalt(formValue, parseInt(uid.match(/[0-9]/))),
                 title: titleValue,
                 markedBy: [],
@@ -44,11 +72,11 @@ export default function AddNote(props) {
                 writer_id: uid,
                 writer_name: displayName
             });
-            toaster.success('Your edit was saved!');
+            toaster.success('Your note was saved!');
             history.push("/my-notes")
         }
         else{
-            toaster.danger('Your note could not be saved. Check if you filled all fields...');
+            toaster.danger('Your note could not be saved. Try again in some time...');
         }
         setFormValue('');
         setTitleValue('');
@@ -57,13 +85,13 @@ export default function AddNote(props) {
     return (
         <div id="App" className={props.font} style={{textAlign:'left', height:'100vh', width:screenWidth>'800'?'50%':'90%', margin:"auto"}}>
                 <Pane display="flex" alignItems="left" flexDirection="column" width="100%">
-                    <div className="title">Create a note</div>
+                    <div className="title">Edit Note</div>
                     <br/>
                     <div className='column'>
-                        <form onSubmit={sendNote} style={{'gap':'4px'}}>
-                            <input className="input" style={{"width": screenWidth>'800'?'70%':'90%'}} type="text" placeholder='Title' onChange={(e)=>setTitleValue(e.target.value)}/>
+                        <form onSubmit={updateNote} style={{'gap':'4px'}}>
+                            <input className="input" style={{"width": screenWidth>'800'?'70%':'90%'}} type="text" placeholder='Title' onChange={(e)=>setTitleValue(e.target.value)} value={titleValue?titleValue:note?note.data().title:titleValue}/>
                             <br/>
-                            <textarea className="input textarea" type="text" placeholder='Put in your thoughts' onChange={(e)=>setFormValue(e.target.value)}/>
+                            <textarea className="input textarea" type="text" placeholder='Put in your thoughts' onChange={(e)=>setFormValue(e.target.value)} value={formValue?formValue:note?deSalt(note.data().note, parseInt(note.data().writer_id.match(/[0-9]/))):null}/>
                             <br/>
                             <div className='overflow'>{tags && tags.map(tag => <div className='tag' key={tags.indexOf(tag)} onClick={()=>{
                                 let updatedList = tags;
@@ -83,10 +111,10 @@ export default function AddNote(props) {
                 </Pane>
                 <Dialog
                     isShown={isShown}
-                    title="Discard Progress?"
+                    title="Discard Changes?"
                     onCloseComplete={() => {setIsShown(false)}}
                     onConfirm={()=> history.push("/")}
-                    confirmLabel="Discard my progress"
+                    confirmLabel="Discard my changes"
                     intent="danger"
                 >
                     Your current typed in data will be lost. Are you sure you want to continue?   
