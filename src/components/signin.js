@@ -19,7 +19,7 @@ export default function Signin(props) {
         3000
     );
     return (
-        <div className="App" style={{height:"100%"}}>
+        <div className="App">
                 <Pane display="flex" alignItems="center" flexDirection="column">
                     <div className="header">Welcome to Noteback</div>
                     <br/>

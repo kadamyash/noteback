@@ -131,7 +131,7 @@ window.onload = () =>{
       
       <Switch>
         <Route path="/" exact>
-          <div id="App" className={selectedFont}>
+          <div className={selectedFont}>
               {user?<NoteBack auth={auth} store={firestore}/>:<Signin auth={auth}/>}
             </div>
         </Route>

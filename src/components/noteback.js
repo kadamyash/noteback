@@ -17,9 +17,9 @@ export default function NoteBack(props){
     // const [sharedNotes] = useCollectionData(sharedNotesQ, {idField: 'id'});
     
     return(
-            <div style={{textAlign:'left', width:'70%', height: '100%'}}>
+            <div className="App" style={{textAlign:'left', width:'100%'}}>
                 <span className="title">Recent Notes</span>
-                <div className="grid">
+                <div className="grid" style={{width: '70%'}}>
                     {notes && notes.sort((a,b) => (a.createdAt > b.createdAt) ? -1 : ((b.createdAt > a.createdAt) ? 1 : 0)).map(note => <Note key={note.id} text={note}/>)}
                 </div>
                 <Link to="/my-notes" className="hyperlink"><button className="btn caption fullwidth-cta">view all notes</button></Link>
