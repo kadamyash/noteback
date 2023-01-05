@@ -19,7 +19,7 @@ export default function Signin(props) {
         3000
     );
     return (
-        <div className="App" style={{height:'100%'}}>
+        <div className="App" style={{height:"100%"}}>
                 <Pane display="flex" alignItems="center" flexDirection="column">
                     <div className="header">Welcome to Noteback</div>
                     <br/>
@@ -29,7 +29,7 @@ export default function Signin(props) {
                     </Pane>
                     <div id="throbber-text" className='almost-muted'>Checking for previous sign-in...</div>
                 <div className="footer">
-                    <div>Noteback Web Notepad - 2022</div>
+                    <div>Noteback Web Notepad - 2023</div>
                 </div>
                 </Pane>
         </div>
